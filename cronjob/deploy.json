@@ -1,0 +1,6 @@
+{
+  "IAM_role_name": "role_name_for_this_cronjob",
+  "schedule": "0 4 * * *",
+  "team": "dataengineering",
+  "category": "data-scraper"
+}
