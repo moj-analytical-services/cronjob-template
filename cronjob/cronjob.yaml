@@ -1,21 +1,21 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: ((???))
+  name: ${CRONJOB_NAME}
 spec:
-  schedule: "((cronjob-schedule))"
+  schedule: ${CRONJOB_SCHEDULE}
   jobTemplate:
     spec:
       template:
         metadata:
           labels:
-            team: ((team))
-            category: ((cronjob-category))
+            team: ${CRONJOB_TEAM}
+            category: ${CRONJOB_CATEGORY}
           annotations:
-            iam.amazonaws.com/role: ((iam-role-name))
+            iam.amazonaws.com/role: ${CRONJOB_IAM_ROLE_NAME}
         spec:
           restartPolicy: OnFailure
           containers:
-            - image: ((docker-image-repo)):((docker-image-tag))
-              name: job
+            - image: ${CRONJOB_IMAGE_REPO}:${CRONJOB_IMAGE_TAG}
+              name: ${CRONJOB_NAME}
               imagePullPolicy: IfNotPresent
